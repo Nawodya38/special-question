@@ -8,8 +8,8 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Georgia', serif;
-            /* Gorgeous soft peach-to-pink gradient background */
+            font-family: 'Comic Sans MS', 'Georgia', serif;
+            /* Beautiful aesthetic soft peach-to-pink gradient background */
             background: linear-gradient(135deg, #ffccd5 0%, #ffdfba 100%);
             display: flex;
             justify-content: center;
@@ -38,7 +38,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(255, 255, 255, 0.75); /* Clean frosted glass design card */
+            background: rgba(255, 255, 255, 0.75); /* Frosted glass card layout */
             padding: 45px 35px;
             border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -47,25 +47,21 @@
             width: 85%;
         }
 
-        /* Text Emoji Graphic Scaling */
-        .emoji-graphic {
-            font-size: 5.5rem;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: bounce 2s ease-in-out infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        /* Graphic Art Container Sizing */
+        .graphic-container {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 25px;
         }
 
-        /* Intro Screen Bold Text Style */
+        /* Intro Page Elegant Heading Text */
         .intro-text {
             color: #ff4d6d;
             font-size: 2.3rem;
             line-height: 1.4;
             margin-bottom: 40px;
             font-weight: normal;
+            font-family: 'Georgia', serif;
         }
 
         h1 {
@@ -86,7 +82,7 @@
             width: 100%;
         }
 
-        /* Elegant rounded pill button styling */
+        /* Elegant rounded pill-style buttons */
         button {
             padding: 14px 40px;
             font-size: 1.2rem;
@@ -126,15 +122,34 @@
 
     <!-- SCREEN 1: The Intro Page -->
     <div id="intro-screen" class="card">
-        <span class="emoji-graphic">💌</span>
+        <!-- Built-in Love Letter Graphic Vector -->
+        <svg class="graphic-container" viewBox="0 0 100 100" xmlns="http://w3.org">
+            <rect x="10" y="25" width="80" height="50" rx="5" fill="#ffffff" stroke="#ff4d6d" stroke-width="4"/>
+            <path d="M 10 25 L 50 55 L 90 25" fill="none" stroke="#ff4d6d" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M 50 48 Q 45 40 50 35 Q 55 40 50 48" fill="#ff4d6d"/>
+            <path d="M 50 48 Q 55 40 50 35 Q 45 40 50 48" fill="#ff4d6d"/>
+        </svg>
         <h2 class="intro-text">I have a very important question to ask you...</h2>
         <button class="primary-btn" onclick="showQuestion()">Continue ❤️</button>
     </div>
 
     <!-- SCREEN 2: The Main Proposal Page -->
     <div id="question-screen" class="card hidden">
-        <!-- Cute Shy Teddy Bear Emoji -->
-        <span class="emoji-graphic">🧸</span>
+        <!-- Built-in Cartoon Figure Holding a Big Heart Vector -->
+        <svg class="graphic-container" viewBox="0 0 100 100" xmlns="http://w3.org">
+            <!-- Cartoon Stick Body -->
+            <path d="M 40 65 Q 35 90 43 98 Q 63 98 60 65" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="55" r="2" fill="#333333"/>
+            <circle cx="56" cy="55" r="2" fill="#333333"/>
+            <!-- Big Pink Heart Being Held -->
+            <path d="M 50 50 C 30 30, 30 65, 50 75 C 70 65, 70 30, 50 50" fill="#ff4d6d" stroke="#ff3355" stroke-width="1.5"/>
+            <!-- Arms Wrapping Around Heart -->
+            <path d="M 38 68 Q 48 65 52 68" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 62 68 Q 52 65 48 68" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
+            <!-- Rosy Cheeks -->
+            <circle cx="45" cy="58" r="3" fill="#ffccd5" opacity="0.8"/>
+            <circle cx="59" cy="58" r="3" fill="#ffccd5" opacity="0.8"/>
+        </svg>
         
         <h1>Will you be my partner? ❤️</h1>
         
@@ -146,8 +161,24 @@
 
     <!-- SCREEN 3: The Success Celebration Page -->
     <div id="success-screen" class="card hidden">
-        <!-- Happy Dancing Celebration Emojis -->
-        <span class="emoji-graphic" style="font-size: 6rem;">💝💃🎉</span>
+        <!-- Built-in Happy Dancing Cartoon Figure Vector -->
+        <svg class="graphic-container" viewBox="0 0 100 100" xmlns="http://w3.org">
+            <!-- Happy Body Doodled -->
+            <path d="M 40 60 Q 35 85 43 95 Q 63 95 60 60" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
+            <!-- Raised Excited Arms -->
+            <path d="M 38 65 Q 20 45 25 30" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 62 65 Q 80 45 75 30" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
+            <!-- Happy Blushing Cheeks -->
+            <circle cx="44" cy="52" r="4" fill="#ffccd5" opacity="0.9"/>
+            <circle cx="56" cy="52" r="4" fill="#ffccd5" opacity="0.9"/>
+            <!-- Eyes & Wide Open Smile -->
+            <circle cx="46" cy="46" r="2" fill="#333333"/>
+            <circle cx="54" cy="46" r="2" fill="#333333"/>
+            <path d="M 47 51 Q 50 55 53 51" fill="none" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Sparkles/Mini Hearts Above -->
+            <path d="M 30 20 C 25 10, 25 25, 30 28 C 35 25, 35 10, 30 20" fill="#ff4d6d"/>
+            <path d="M 70 20 C 65 10, 65 25, 70 28 C 75 25, 75 10, 70 20" fill="#ff4d6d"/>
+        </svg>
         <h1 style="font-size: 2.3rem; line-height: 1.4; margin-bottom: 0;">Yay!<br>Best decision ever 🥰💖</h1>
     </div>
 
@@ -177,8 +208,8 @@
             const noBtn = document.getElementById('noBtn');
             moveCount++;
 
-            // Hide the NO button after it has run away 3 times
-            if (moveCount > 3) {
+            // Hide the NO button after it has run away exactly 4 times
+            if (moveCount > 4) {
                 noBtn.style.display = 'none';
                 return;
             }
