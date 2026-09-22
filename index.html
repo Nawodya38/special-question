@@ -9,9 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Comic Sans MS', 'Georgia', serif;
-            /* Aesthetic pink/red heart vignette border style */
-            background-color: #ffeef2;
-            background-image: radial-gradient(circle, transparent 40%, #ffccd5 90%);
+            background-color: #ffccd5; /* Soft pastel pink background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,163 +18,180 @@
             text-align: center;
         }
 
-        /* Border frame of hearts to match the picture */
-        .hearts-frame {
+        /* Falling Hearts Background Effect */
+        .heart-fall {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            color: #ff4d6d;
+            opacity: 0.7;
+            font-size: 22px;
+            animation: fall linear infinite;
             pointer-events: none;
-            z-index: 1;
         }
-        .bg-heart {
-            position: absolute;
-            font-size: 30px;
-            opacity: 0.85;
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
         }
-        /* Positioning random heart visuals around the edges */
-        .h1 { top: 10%; left: 5%; transform: rotate(-15deg); }
-        .h2 { top: 40%; left: 3%; transform: rotate(10deg); font-size: 45px; }
-        .h3 { bottom: 15%; left: 6%; transform: rotate(-25deg); }
-        .h4 { top: 8%; right: 6%; transform: rotate(20deg); }
-        .h5 { top: 45%; right: 4%; transform: rotate(-10deg); font-size: 40px; }
-        .h6 { bottom: 12%; right: 7%; transform: rotate(15deg); }
 
         .card {
             z-index: 10;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(255, 255, 255, 0.4);
-            padding: 30px;
-            border-radius: 40px;
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.6); /* Soft white card glass */
+            padding: 45px 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(229, 56, 59, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 420px;
+            width: 90%;
+            transition: all 0.3s ease;
         }
 
-        /* The cute Flork character graphic container */
-        .character-box {
-            position: relative;
-            margin-bottom: 25px;
+        /* Intro Screen Big Text Style */
+        .intro-text {
+            color: #ff4d6d;
+            font-size: 2.5rem;
+            font-family: 'Georgia', serif;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            font-weight: normal;
         }
-        
-        /* Using a clean SVG drawing of the Flork stick character holding a sign */
+
+        /* Flork Sticker Image Styling */
         .flork-img {
-            width: 180px;
+            width: 200px;
             height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: bold;
         }
 
         .btn-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 60px;
+            gap: 40px;
             position: relative;
-            min-height: 100px;
-            width: 450px;
-            margin: 20px auto 0 auto;
+            min-height: 80px;
+            width: 100%;
         }
 
-        /* Styled to look exactly like the dotted border button style in your picture */
+        /* Button Styling */
         button {
-            padding: 10px 35px;
+            padding: 12px 35px;
             font-size: 1.2rem;
             font-weight: bold;
             font-family: 'Comic Sans MS', sans-serif;
             border: 3px dashed #ff4d6d;
             border-radius: 20px;
             background-color: white;
-            color: #333;
+            color: #ff4d6d;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
+        }
+
+        /* Large custom style for the Continue button */
+        .continue-btn {
+            border: none;
+            background-color: #ff4d6d;
+            color: white;
+            border-radius: 30px;
+            padding: 15px 50px;
+            font-size: 1.3rem;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 4px 15px rgba(229, 56, 59, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.06);
         }
 
         #yesBtn:hover {
-            transform: scale(1.1);
-            background-color: #ffe6eb;
+            background-color: #fff0f3;
         }
 
         #noBtn {
+            background-color: white;
+            color: #666;
+            border-color: #999;
             position: relative;
-            border-color: #777;
         }
 
-        .hidden { display: none; }
-        
-        h1 {
-            color: #333;
-            font-size: 2.2rem;
-            margin: 15px 0;
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-    <!-- Frame layout of decorative hearts around the border -->
-    <div class="hearts-frame">
-        <div class="bg-heart h1">💖</div> <div class="bg-heart h2">❤️</div> <div class="bg-heart h3">💝</div>
-        <div class="bg-heart h4">💕</div> <div class="bg-heart h5">❤️</div> <div class="bg-heart h6">💖</div>
+    <!-- Floating Background Hearts -->
+    <div id="hearts-container"></div>
+
+    <!-- SCREEN 1: The Intro Page (Like the TikTok Photo) -->
+    <div id="intro-screen" class="card">
+        <h2 class="intro-text">I have a very important question to ask you...</h2>
+        <button class="continue-btn" onclick="showQuestion()">Continue ❤️</button>
     </div>
 
-    <!-- Screen 1: The Question Panel -->
-    <div id="question-screen" class="card">
-        <div class="character-box">
-            <!-- Cute vector of the Flork sticker holding a question frame -->
-            <svg class="flork-img" viewBox="0 0 200 200" xmlns="http://w3.org">
-                <!-- Sign Frame -->
-                <rect x="35" y="45" width="130" height="65" rx="15" fill="white" stroke="black" stroke-width="3"/>
-                <text x="100" y="73" font-family="Comic Sans MS" font-size="13" font-weight="bold" text-anchor="middle" fill="black">Will you be</text>
-                <text x="100" y="93" font-family="Comic Sans MS" font-size="13" font-weight="bold" text-anchor="middle" fill="black">my partner? 🤔</text>
-                
-                <!-- Flower on Head -->
-                <circle cx="85" cy="113" r="6" fill="#ffb3c1"/>
-                <circle cx="95" cy="115" r="6" fill="#ffb3c1"/>
-                <circle cx="90" cy="122" r="6" fill="#ffb3c1"/>
-                <circle cx="90" cy="117" r="4" fill="#ffeb3b"/>
-                
-                <!-- Body Doodle -->
-                <path d="M 75 140 Q 70 185 80 195 Q 120 195 115 140" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
-                <!-- Arms holding the sign up -->
-                <path d="M 72 150 Q 55 130 55 110" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
-                <path d="M 113 150 Q 135 130 135 110" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
-                <!-- Eyes -->
-                <circle cx="88" cy="138" r="2.5" fill="black"/>
-                <circle cx="98" cy="138" r="2.5" fill="black"/>
-            </svg>
-        </div>
-
+    <!-- SCREEN 2: The Main Proposal Page (Hidden at first) -->
+    <div id="question-screen" class="card hidden">
+        <!-- Cute Flork Sticker Holding a Heart -->
+        <img class="flork-img" src="https://giphy.com" alt="Cute Flork Character">
+        
+        <h1>Will you be my partner? ❤️</h1>
+        
         <div class="btn-container">
             <button id="yesBtn" onclick="celebrate()">YES</button>
             <button id="noBtn" onmouseover="teleportNo()" onclick="teleportNo()">NO</button>
         </div>
     </div>
 
-    <!-- Screen 2: Celebration Panel -->
+    <!-- SCREEN 3: The Success Message Page -->
     <div id="success-screen" class="card hidden">
-        <svg class="flork-img" viewBox="0 0 200 200" xmlns="http://w3.org">
-            <!-- Body Doodle Happy -->
-            <path d="M 75 130 Q 70 180 80 190 Q 120 190 115 130" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
-            <!-- Raised Arms Celebrating -->
-            <path d="M 72 140 Q 45 110 50 90" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
-            <path d="M 113 140 Q 145 110 140 90" fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
-            <!-- Rosy Cheeks -->
-            <circle cx="83" cy="132" r="5" fill="#ffb3c1" opacity="0.6"/>
-            <circle cx="107" cy="132" r="5" fill="#ffb3c1" opacity="0.6"/>
-            <!-- Eyes & Happy Smile -->
-            <circle cx="88" cy="126" r="2.5" fill="black"/>
-            <circle cx="102" cy="126" r="2.5" fill="black"/>
-            <path d="M 91 133 Q 95 138 99 133" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <!-- Floating hearts above character -->
-            <text x="60" y="70" font-size="20">💖</text>
-            <text x="130" y="65" font-size="25">🥰</text>
-            <text x="95" y="45" font-size="22">🎉</text>
-        </svg>
-        <h1>Yay! Best decision ever! 💖</h1>
+        <!-- Cute Happy Dancing Flork Sticker -->
+        <img class="flork-img" src="https://giphy.com" alt="Happy Flork Character">
+        <h1>Yay! Best decision ever 🥰💖🎉</h1>
     </div>
 
     <script>
-        // Teleport the "NO" button randomly when focused or hovered
+        // Generate falling background hearts
+        const container = document.getElementById('hearts-container');
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('heart-fall');
+            heart.innerText = '🌸';
+            if(Math.random() > 0.5) {
+                heart.innerText = '❤️';
+            }
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.opacity = Math.random();
+            container.appendChild(heart);
+        }
+
+        // Move from Intro Screen to Question Screen
+        function showQuestion() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('question-screen').classList.remove('hidden');
+        }
+
+        // Keep track of how many times the NO button moves
+        let moveCount = 0;
+
         function teleportNo() {
             const noBtn = document.getElementById('noBtn');
+            moveCount++;
+
+            // If it has run away 3 times, hide it on the 4th attempt
+            if (moveCount > 3) {
+                noBtn.style.display = 'none';
+                return;
+            }
+
             noBtn.style.position = 'absolute'; 
             
             const x = Math.floor(Math.random() * (window.innerWidth - 140));
@@ -186,6 +201,7 @@
             noBtn.style.top = y + 'px';
         }
 
+        // Move to the final celebration screen
         function celebrate() {
             document.getElementById('question-screen').classList.add('hidden');
             document.getElementById('success-screen').classList.remove('hidden');
