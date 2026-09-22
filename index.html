@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I have a question...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: #f7a088; /* Matching the TikTok peach color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Falling Hearts Background Effect */
+        .heart-fall {
+            position: absolute;
+            color: #e04343;
+            opacity: 0.6;
+            font-size: 20px;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .card {
+            z-index: 10;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            height: 100px;
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: white;
+            color: #e04343;
+        }
+        #yesBtn:hover {
+            transform: scale(1.08);
+        }
+
+        #noBtn {
+            background-color: rgba(255,255,255,0.8);
+            color: #666;
+            position: absolute;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Falling Hearts Container -->
+    <div id="hearts-container"></div>
+
+    <!-- Screen 1: The Question -->
+    <div id="question-screen" class="card">
+        <h1 id="main-text">Will you be my partner? ❤️</h1>
+        <div class="btn-container">
+            <button id="yesBtn" onclick="celebrate()">YES ❤️</button>
+            <button id="noBtn" onmouseover="teleportNo()" onclick="teleportNo()">No</button>
+        </div>
+    </div>
+
+    <!-- Screen 2: The Success Message -->
+    <div id="success-screen" class="card hidden">
+        <h1>Yay! Best decision ever 🥰💖🎉</h1>
+    </div>
+
+    <script>
+        // Generate falling hearts background automatically
+        const container = document.getElementById('hearts-container');
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('heart-fall');
+            heart.innerText = '🎈'; // You can change this to ❤️ or 🌸
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.opacity = Math.random();
+            container.appendChild(heart);
+        }
+
+        // Make the "No" button escape when hovered or clicked
+        function teleportNo() {
+            const noBtn = document.getElementById('noBtn');
+            // Move it to completely random corners of the screen area
+            const x = Math.floor(Math.random() * (window.innerWidth - 120));
+            const y = Math.floor(Math.random() * (window.innerHeight - 60));
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        // Switch to the success screen
+        function celebrate() {
+            document.getElementById('question-screen').classList.add('hidden');
+            document.getElementById('success-screen').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
