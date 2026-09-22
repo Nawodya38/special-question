@@ -8,8 +8,9 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Comic Sans MS', 'Georgia', serif;
-            background-color: #ffccd5; /* Soft pastel pink background */
+            font-family: 'Georgia', serif;
+            /* Aesthetic soft peach/orange gradient from your TikTok picture */
+            background: linear-gradient(135deg, #ffb3a7 0%, #ffdfba 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,12 +19,12 @@
             text-align: center;
         }
 
-        /* Falling Hearts Background Effect */
+        /* Falling Soft Red Hearts Effect */
         .heart-fall {
             position: absolute;
             color: #ff4d6d;
-            opacity: 0.7;
-            font-size: 22px;
+            opacity: 0.6;
+            font-size: 20px;
             animation: fall linear infinite;
             pointer-events: none;
         }
@@ -37,36 +38,37 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(255, 255, 255, 0.6); /* Soft white card glass */
-            padding: 45px 40px;
+            background: rgba(255, 255, 255, 0.7); /* Clean soft frosted glass look */
+            padding: 40px;
             border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(229, 56, 59, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(10px);
-            max-width: 420px;
-            width: 90%;
-            transition: all 0.3s ease;
+            max-width: 400px;
+            width: 85%;
         }
 
-        /* Intro Screen Big Text Style */
+        /* Intro Screen Elegant Heading Text */
         .intro-text {
-            color: #ff4d6d;
-            font-size: 2.5rem;
-            font-family: 'Georgia', serif;
+            color: white;
+            font-size: 2.3rem;
             line-height: 1.4;
             margin-bottom: 40px;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
             font-weight: normal;
         }
 
-        /* Flork Sticker Image Styling */
-        .flork-img {
-            width: 200px;
-            height: auto;
-            margin-bottom: 20px;
+        /* Fixed Cute GIF Sticker Styling */
+        .flork-gif {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 25px;
+            border-radius: 20px;
         }
 
         h1 {
             color: #ff4d6d;
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-top: 0;
             margin-bottom: 30px;
             font-weight: bold;
@@ -82,44 +84,37 @@
             width: 100%;
         }
 
-        /* Button Styling */
+        /* Button Framework */
         button {
             padding: 12px 35px;
             font-size: 1.2rem;
             font-weight: bold;
-            font-family: 'Comic Sans MS', sans-serif;
-            border: 3px dashed #ff4d6d;
-            border-radius: 20px;
-            background-color: white;
-            color: #ff4d6d;
+            font-family: 'Georgia', serif;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        /* Large custom style for the Continue button */
-        .continue-btn {
+        /* Elegant rounded pill-shape for Continue & YES */
+        .primary-btn {
             border: none;
-            background-color: #ff4d6d;
-            color: white;
+            background-color: white;
+            color: #ff4d6d;
             border-radius: 30px;
             padding: 15px 50px;
             font-size: 1.3rem;
-            font-family: 'Georgia', serif;
-            box-shadow: 0 4px 15px rgba(229, 56, 59, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.2);
         }
 
-        button:hover {
+        .primary-btn:hover {
             transform: scale(1.06);
-        }
-
-        #yesBtn:hover {
             background-color: #fff0f3;
         }
 
         #noBtn {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.5);
             color: #666;
-            border-color: #999;
+            border: 2px solid #ccc;
+            border-radius: 30px;
             position: relative;
         }
 
@@ -131,21 +126,21 @@
     <!-- Floating Background Hearts -->
     <div id="hearts-container"></div>
 
-    <!-- SCREEN 1: The Intro Page (Like the TikTok Photo) -->
-    <div id="intro-screen" class="card">
+    <!-- SCREEN 1: The Intro Page (Matches your orange screen) -->
+    <div id="intro-screen" class="card" style="background: transparent; box-shadow: none; backdrop-filter: none;">
         <h2 class="intro-text">I have a very important question to ask you...</h2>
-        <button class="continue-btn" onclick="showQuestion()">Continue ❤️</button>
+        <button class="primary-btn" onclick="showQuestion()">Continue ❤️</button>
     </div>
 
-    <!-- SCREEN 2: The Main Proposal Page (Hidden at first) -->
+    <!-- SCREEN 2: The Main Proposal Page -->
     <div id="question-screen" class="card hidden">
-        <!-- Cute Flork Sticker Holding a Heart -->
-        <img class="flork-img" src="https://giphy.com" alt="Cute Flork Character">
+        <!-- Cute Flork Sticker Shy/Holding Heart -->
+        <img class="flork-gif" src="https://tenor.com" alt="Cute Flork Character">
         
         <h1>Will you be my partner? ❤️</h1>
         
         <div class="btn-container">
-            <button id="yesBtn" onclick="celebrate()">YES</button>
+            <button id="yesBtn" class="primary-btn" onclick="celebrate()">YES</button>
             <button id="noBtn" onmouseover="teleportNo()" onclick="teleportNo()">NO</button>
         </div>
     </div>
@@ -153,23 +148,20 @@
     <!-- SCREEN 3: The Success Message Page -->
     <div id="success-screen" class="card hidden">
         <!-- Cute Happy Dancing Flork Sticker -->
-        <img class="flork-img" src="https://giphy.com" alt="Happy Flork Character">
-        <h1>Yay! Best decision ever 🥰💖🎉</h1>
+        <img class="flork-gif" src="https://tenor.com" alt="Happy Flork Character">
+        <h1 style="font-size: 2.2rem; line-height: 1.4;">Yay! Best decision ever 🥰💖🎉</h1>
     </div>
 
     <script>
-        // Generate falling background hearts
+        // Generate falling background hearts automatically
         const container = document.getElementById('hearts-container');
         for (let i = 0; i < 30; i++) {
             let heart = document.createElement('div');
             heart.classList.add('heart-fall');
-            heart.innerText = '🌸';
-            if(Math.random() > 0.5) {
-                heart.innerText = '❤️';
-            }
+            heart.innerText = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            heart.style.opacity = Math.random();
+            heart.style.opacity = Math.random() * 0.6 + 0.4;
             container.appendChild(heart);
         }
 
