@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Comic Sans MS', 'Georgia', serif;
-            /* Beautiful aesthetic soft peach-to-pink gradient background */
+            /* Beautiful peach-pink gradient background */
             background: linear-gradient(135deg, #ffccd5 0%, #ffdfba 100%);
             display: flex;
             justify-content: center;
@@ -38,7 +38,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(255, 255, 255, 0.75); /* Frosted glass card layout */
+            background: rgba(255, 255, 255, 0.85); /* Clean bright white card layout */
             padding: 45px 35px;
             border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -47,7 +47,7 @@
             width: 85%;
         }
 
-        /* Graphic Art Container Sizing */
+        /* Fixed SVG Cartoon Figure Container */
         .graphic-container {
             width: 180px;
             height: 180px;
@@ -76,7 +76,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px; /* Keeps plenty of breathing room between choices */
+            gap: 30px; /* Forces YES and NO side-by-side cleanly */
             position: relative;
             min-height: 80px;
             width: 100%;
@@ -84,14 +84,15 @@
 
         /* Elegant rounded pill-style buttons */
         button {
-            padding: 14px 40px;
+            padding: 14px 35px;
             font-size: 1.2rem;
             font-weight: bold;
             font-family: 'Georgia', serif;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.1s ease;
             border-radius: 30px;
             border: none;
+            display: inline-block;
         }
 
         .primary-btn {
@@ -109,7 +110,7 @@
             background-color: white;
             color: #666;
             border: 2px solid #ccc;
-            position: relative;
+            position: relative; /* Starts naturally right next to YES */
         }
 
         .hidden { display: none !important; }
@@ -137,16 +138,12 @@
     <div id="question-screen" class="card hidden">
         <!-- Built-in Cartoon Figure Holding a Big Heart Vector -->
         <svg class="graphic-container" viewBox="0 0 100 100" xmlns="http://w3.org">
-            <!-- Cartoon Stick Body -->
             <path d="M 40 65 Q 35 90 43 98 Q 63 98 60 65" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
             <circle cx="48" cy="55" r="2" fill="#333333"/>
             <circle cx="56" cy="55" r="2" fill="#333333"/>
-            <!-- Big Pink Heart Being Held -->
             <path d="M 50 50 C 30 30, 30 65, 50 75 C 70 65, 70 30, 50 50" fill="#ff4d6d" stroke="#ff3355" stroke-width="1.5"/>
-            <!-- Arms Wrapping Around Heart -->
             <path d="M 38 68 Q 48 65 52 68" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
             <path d="M 62 68 Q 52 65 48 68" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
-            <!-- Rosy Cheeks -->
             <circle cx="45" cy="58" r="3" fill="#ffccd5" opacity="0.8"/>
             <circle cx="59" cy="58" r="3" fill="#ffccd5" opacity="0.8"/>
         </svg>
@@ -163,19 +160,14 @@
     <div id="success-screen" class="card hidden">
         <!-- Built-in Happy Dancing Cartoon Figure Vector -->
         <svg class="graphic-container" viewBox="0 0 100 100" xmlns="http://w3.org">
-            <!-- Happy Body Doodled -->
             <path d="M 40 60 Q 35 85 43 95 Q 63 95 60 60" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
-            <!-- Raised Excited Arms -->
             <path d="M 38 65 Q 20 45 25 30" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
             <path d="M 62 65 Q 80 45 75 30" fill="none" stroke="#333333" stroke-width="3" stroke-linecap="round"/>
-            <!-- Happy Blushing Cheeks -->
             <circle cx="44" cy="52" r="4" fill="#ffccd5" opacity="0.9"/>
             <circle cx="56" cy="52" r="4" fill="#ffccd5" opacity="0.9"/>
-            <!-- Eyes & Wide Open Smile -->
             <circle cx="46" cy="46" r="2" fill="#333333"/>
             <circle cx="54" cy="46" r="2" fill="#333333"/>
             <path d="M 47 51 Q 50 55 53 51" fill="none" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Sparkles/Mini Hearts Above -->
             <path d="M 30 20 C 25 10, 25 25, 30 28 C 35 25, 35 10, 30 20" fill="#ff4d6d"/>
             <path d="M 70 20 C 65 10, 65 25, 70 28 C 75 25, 75 10, 70 20" fill="#ff4d6d"/>
         </svg>
