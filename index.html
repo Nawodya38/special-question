@@ -9,8 +9,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Georgia', serif;
-            /* Aesthetic soft peach/orange gradient from your TikTok picture */
-            background: linear-gradient(135deg, #ffb3a7 0%, #ffdfba 100%);
+            /* Gorgeous soft peach-to-pink gradient background */
+            background: linear-gradient(135deg, #ffccd5 0%, #ffdfba 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,12 +19,12 @@
             text-align: center;
         }
 
-        /* Falling Soft Red Hearts Effect */
+        /* Falling Soft Red Hearts Background Effect */
         .heart-fall {
             position: absolute;
             color: #ff4d6d;
             opacity: 0.6;
-            font-size: 20px;
+            font-size: 22px;
             animation: fall linear infinite;
             pointer-events: none;
         }
@@ -38,8 +38,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(255, 255, 255, 0.7); /* Clean soft frosted glass look */
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.75); /* Clean frosted glass design card */
+            padding: 45px 35px;
             border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(10px);
@@ -47,30 +47,32 @@
             width: 85%;
         }
 
-        /* Intro Screen Elegant Heading Text */
+        /* Text Emoji Graphic Scaling */
+        .emoji-graphic {
+            font-size: 5.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Intro Screen Bold Text Style */
         .intro-text {
-            color: white;
+            color: #ff4d6d;
             font-size: 2.3rem;
             line-height: 1.4;
             margin-bottom: 40px;
-            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
             font-weight: normal;
-        }
-
-        /* Fixed Cute GIF Sticker Styling */
-        .flork-gif {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
-            margin-bottom: 25px;
-            border-radius: 20px;
         }
 
         h1 {
             color: #ff4d6d;
-            font-size: 2rem;
+            font-size: 2.1rem;
             margin-top: 0;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             font-weight: bold;
         }
 
@@ -78,43 +80,39 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 40px; /* Keeps plenty of breathing room between choices */
             position: relative;
             min-height: 80px;
             width: 100%;
         }
 
-        /* Button Framework */
+        /* Elegant rounded pill button styling */
         button {
-            padding: 12px 35px;
+            padding: 14px 40px;
             font-size: 1.2rem;
             font-weight: bold;
             font-family: 'Georgia', serif;
             cursor: pointer;
             transition: all 0.2s ease;
+            border-radius: 30px;
+            border: none;
         }
 
-        /* Elegant rounded pill-shape for Continue & YES */
         .primary-btn {
-            border: none;
-            background-color: white;
-            color: #ff4d6d;
-            border-radius: 30px;
-            padding: 15px 50px;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.2);
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(229, 56, 59, 0.25);
         }
 
         .primary-btn:hover {
             transform: scale(1.06);
-            background-color: #fff0f3;
+            background-color: #ff3355;
         }
 
         #noBtn {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: white;
             color: #666;
             border: 2px solid #ccc;
-            border-radius: 30px;
             position: relative;
         }
 
@@ -126,16 +124,17 @@
     <!-- Floating Background Hearts -->
     <div id="hearts-container"></div>
 
-    <!-- SCREEN 1: The Intro Page (Matches your orange screen) -->
-    <div id="intro-screen" class="card" style="background: transparent; box-shadow: none; backdrop-filter: none;">
+    <!-- SCREEN 1: The Intro Page -->
+    <div id="intro-screen" class="card">
+        <span class="emoji-graphic">💌</span>
         <h2 class="intro-text">I have a very important question to ask you...</h2>
         <button class="primary-btn" onclick="showQuestion()">Continue ❤️</button>
     </div>
 
     <!-- SCREEN 2: The Main Proposal Page -->
     <div id="question-screen" class="card hidden">
-        <!-- Cute Flork Sticker Shy/Holding Heart -->
-        <img class="flork-gif" src="https://tenor.com" alt="Cute Flork Character">
+        <!-- Cute Shy Teddy Bear Emoji -->
+        <span class="emoji-graphic">🧸</span>
         
         <h1>Will you be my partner? ❤️</h1>
         
@@ -145,11 +144,11 @@
         </div>
     </div>
 
-    <!-- SCREEN 3: The Success Message Page -->
+    <!-- SCREEN 3: The Success Celebration Page -->
     <div id="success-screen" class="card hidden">
-        <!-- Cute Happy Dancing Flork Sticker -->
-        <img class="flork-gif" src="https://tenor.com" alt="Happy Flork Character">
-        <h1 style="font-size: 2.2rem; line-height: 1.4;">Yay! Best decision ever 🥰💖🎉</h1>
+        <!-- Happy Dancing Celebration Emojis -->
+        <span class="emoji-graphic" style="font-size: 6rem;">💝💃🎉</span>
+        <h1 style="font-size: 2.3rem; line-height: 1.4; margin-bottom: 0;">Yay!<br>Best decision ever 🥰💖</h1>
     </div>
 
     <script>
@@ -161,7 +160,7 @@
             heart.innerText = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            heart.style.opacity = Math.random() * 0.6 + 0.4;
+            heart.style.opacity = Math.random() * 0.5 + 0.4;
             container.appendChild(heart);
         }
 
@@ -178,7 +177,7 @@
             const noBtn = document.getElementById('noBtn');
             moveCount++;
 
-            // If it has run away 3 times, hide it on the 4th attempt
+            // Hide the NO button after it has run away 3 times
             if (moveCount > 3) {
                 noBtn.style.display = 'none';
                 return;
